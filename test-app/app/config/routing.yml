@@ -1,0 +1,43 @@
+app_bundle_import:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+app_valid_controller:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+app_invalid_controller_because_bundle_does_not_exist:
+    path:     /
+    defaults: { _controller: InvalidBundle:Default:index }
+
+app_invalid_controller_because_of_trailing_action:
+    path:     /
+    defaults: { _controller: AppBundle:Default:indexAction }
+
+app_invalid_controller_because_class_does_not_exist:
+    path:     /
+    defaults: { _controller: AppBundle:InvalidClass:index }
+
+app_valid_service:
+    path:     /
+    defaults: { _controller: app.controller_service:indexAction }
+
+app_invalid_service_because_service_doesnt_exist:
+    path:     /
+    defaults: { _controller: app.invalid_controller_service:indexAction }
+
+app_invalid_service_because_method_doesnt_exist:
+    path:     /
+    defaults: { _controller: app.controller_service:invalidMethodAction }
+
+app_invalid_route_format:
+    path:     /
+    defaults: { _controller: blabla!£% }
+
+app_invalid_route_format_2:
+    path:     /
+    defaults: { _controller: AppBundleDefault@ }
+
+app_invalid_missing_controller:
+    path:     /
+    defaults: { }

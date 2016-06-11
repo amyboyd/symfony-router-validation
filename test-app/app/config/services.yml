@@ -1,0 +1,14 @@
+services:
+    app.controller_service:
+        class: AppBundle\Controller\DefaultController
+
+    amyboyd.command.router_validate_command:
+        class: AmyBoyd\SymfonyStuff\RouterValidation\RouterValidationCommand
+        tags:
+            -  { name: console.command }
+
+    amyboyd.router_validation:
+        class: AmyBoyd\SymfonyStuff\RouterValidation\RouterValidationService
+        arguments:
+            controllerNameParser: '@controller_name_converter'
+            container: '@service_container'

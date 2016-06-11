@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+function run_validate_command_for_symfony_version() {
+    version=$1
+
+    rm -fr test-app/app/cache/*
+
+    echo 'Using Symfony version' $version
+    SYMFONY_VERSION="$version" test-app/app/console router:validate
+}
+
+run_validate_command_for_symfony_version 2.5
+run_validate_command_for_symfony_version 2.8
+run_validate_command_for_symfony_version 3.0
+run_validate_command_for_symfony_version 3.1
