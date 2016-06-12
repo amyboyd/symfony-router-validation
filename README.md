@@ -70,3 +70,16 @@ app_invalid_missing_controller - _controller property is not set.
 app_invalid_route_format - Route format "blabla!£%" is not supported by this tool
 app_invalid_route_format_2 - Route format "AppBundleDefault@" is not supported by this tool
 ```
+
+How to use in continuous integration testing or a Git pre-commit hook
+---------------------------------------------------------------------
+
+The command returns exit code 0 if all routes are valid, and 1 if there are any invalid routes.
+You can use this in continuous integration testing or a Git pre-commit hook as follows:
+
+```bash
+app/console router:validate # or bin/console in Symfony 3
+if [[ $? != '0' ]]; then
+    exit 1
+fi
+```
